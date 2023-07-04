@@ -33,10 +33,10 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userId = '1';
-    this.userName = 'Said Nader';
-    // this.userId = this.authService.getUserId();
-    // this.userName = this.authService.getUserName();
+    // this.userId = '1';
+    // this.userName = 'Said Nader';
+    this.userId = this.authService.getUserId();
+    this.userName = this.authService.getUserName();
     this.userNameFirstLetter = this.userName[0];
     this.selectedOption = 'Pagos';
   }

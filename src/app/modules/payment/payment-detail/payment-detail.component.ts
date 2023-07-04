@@ -13,7 +13,7 @@ export class PaymentDetailComponent implements OnInit {
   filteredPayments: Payment[] = [];
   searchTerm: string = '';
   currentPage: number = 1;
-  paymentsPerPage: number = 5;
+  paymentsPerPage: number = 2;
   maxDisplayedPages: number = 3;
   startPage: number = 1;
   paginationPages: number[] = [];
@@ -131,8 +131,8 @@ export class PaymentDetailComponent implements OnInit {
 
   ngOnInit() {
     this.justLoggedIn = this.authService.hasJustLoggedIn();
-    // this.userId = this.authService.getUserId();
-    this.userId = '1';
+    this.userId = this.authService.getUserId();
+    // this.userId = '1';
     setTimeout(() => {
       this.showNotification = false;
     }, 5000);
