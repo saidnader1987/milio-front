@@ -1,0 +1,105 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.logo-container {
+  position: absolute;
+  top: 2.4rem;
+  left: 2.8rem;
+}
+
+.logo-container img {
+  width: 20rem;
+  height: 14.1rem;
+}
+
+.login-div {
+  max-width: 69.6rem;
+  max-height: 50.3rem;
+  font-family: "Satoshi", sans-serif;
+  display: flex;
+  padding: 10.2rem 13.3rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 5.6rem;
+  border-radius: 3rem;
+  border: 1px solid #707070;
+  background: #fff;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.login-form p {
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.login-div h1 {
+  color: #242424;
+  font-size: 35px;
+  font-family: Satoshi;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+}
+
+.form-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  position: relative;
+}
+
+.form-div label {
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  background-color: #fff;
+  padding: 0 5px;
+  color: #242424;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.form-div input {
+  width: 43.1rem;
+  height: 5.7rem;
+  flex-shrink: 0;
+  border: 1px solid #707070;
+  border-radius: 1rem;
+  padding: 8px;
+  font-size: 1.9rem;
+}
+
+.login-btn {
+  width: 25rem;
+  height: 5rem;
+  flex-shrink: 0;
+  background-color: #0136fe;
+  color: #fff;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.text-danger {
+  font-size: 1.6rem;
+}

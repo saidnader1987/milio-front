@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  /* font-size: 10px; */
+  /* 10/16 = 0.625 */
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+}

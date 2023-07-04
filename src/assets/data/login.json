@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "email": "snader",
+    "name": "Said Nader",
+    "password": "123",
+    "twofactor": "123456"
+  },
+  {
+    "id": "2",
+    "email": "mquintero@miliopay.com",
+    "name": "Maria Quintero",
+    "password": "maria123",
+    "twofactor": "234567"
+  },
+  {
+    "id": "3",
+    "email": "anader@miliopay.com",
+    "name": "Arya Nader",
+    "password": "arya123",
+    "twofactor": "345678"
+  }
+]

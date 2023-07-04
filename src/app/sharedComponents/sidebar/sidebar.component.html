@@ -1,0 +1,119 @@
+<div class="sidebar">
+  <div class="logo-container">
+    <img src="assets/images/milio-2.png" alt="logo" />
+  </div>
+  <ul class="options">
+    <div
+      (click)="renderOption('Inicio')"
+      [ngClass]="{ 'highlighted-option': selectedOption === 'Inicio' }"
+      class="options-item"
+    >
+      <img
+        class="options-item__icon"
+        src="assets/icons/home-icon.svg"
+        alt="back"
+      />
+      <p class="options-item__text">Inicio</p>
+    </div>
+    <div
+      (click)="renderOption('Transacciones')"
+      [ngClass]="{ 'highlighted-option': selectedOption === 'Transacciones' }"
+      class="options-item"
+    >
+      <img
+        class="options-item__icon"
+        src="assets/icons/transactions-icon.svg"
+        alt="back"
+      />
+      <p class="options-item__text">Transacciones</p>
+    </div>
+    <div
+      (click)="renderOption('Pagos')"
+      [ngClass]="{ 'highlighted-option': selectedOption === 'Pagos' }"
+      class="options-item"
+    >
+      <img
+        class="options-item__icon"
+        src="assets/icons/payments-icon.svg"
+        alt="back"
+      />
+      <p class="options-item__text">Pagos</p>
+    </div>
+    <div
+      (click)="renderOption('Cobros')"
+      [ngClass]="{ 'highlighted-option': selectedOption === 'Cobros' }"
+      class="options-item"
+    >
+      <img
+        class="options-item__icon"
+        src="assets/icons/charges-icon.svg"
+        alt="back"
+      />
+      <p class="options-item__text">Cobros</p>
+    </div>
+    <div
+      (click)="renderOption('Bancos')"
+      [ngClass]="{ 'highlighted-option': selectedOption === 'Bancos' }"
+      class="options-item"
+    >
+      <img
+        class="options-item__icon"
+        src="assets/icons/banks-icon.svg"
+        alt="back"
+      />
+      <p class="options-item__text">Bancos</p>
+    </div>
+    <div
+      (click)="renderOption('Terceros')"
+      [ngClass]="{ 'highlighted-option': selectedOption === 'Terceros' }"
+      class="options-item"
+    >
+      <img
+        class="options-item__icon"
+        src="assets/icons/third-parties-icon.svg"
+        alt="back"
+      />
+      <p class="options-item__text">Terceros</p>
+    </div>
+    <div
+      (click)="renderOption('Configuracion')"
+      [ngClass]="{ 'highlighted-option': selectedOption === 'Configuracion' }"
+      class="options-item"
+    >
+      <img
+        class="options-item__icon"
+        src="assets/icons/settings-icon.svg"
+        alt="back"
+      />
+      <p class="options-item__text">Configuracion</p>
+    </div>
+  </ul>
+  <div
+    class="profile-container"
+    (mouseenter)="isHovering = true"
+    (mouseleave)="isHovering = false"
+  >
+    <div class="user-menu" *ngIf="isHovering">
+      <div class="menu-container__profile">
+        <div class="user-img menu-container__user-img">
+          <p>{{ userNameFirstLetter }}</p>
+        </div>
+        <div class="user-name menu-container__user-name">
+          <p>{{ userName }}</p>
+          <span>ID {{ userId }}</span>
+        </div>
+      </div>
+      <hr />
+      <p (click)="renderOption('Perfil')">Mi cuenta</p>
+      <p (click)="logout()">Cerrar sesión</p>
+    </div>
+
+    <div class="user-img">
+      <p>{{ userNameFirstLetter }}</p>
+    </div>
+    <div class="user-name">
+      <p>{{ userName.split(" ")[0] }}</p>
+      <span>Oportu colombia</span>
+    </div>
+  </div>
+</div>

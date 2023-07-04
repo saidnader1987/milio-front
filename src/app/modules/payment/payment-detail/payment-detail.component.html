@@ -1,0 +1,254 @@
+<div class="outer-container">
+  <section class="main-container">
+    <div class="main-container__header">
+      <p class="main-container__header-text">Pagos</p>
+      <button class="main-container__header-btn">Crear</button>
+    </div>
+
+    <nav class="menu">
+      <ul class="menu__options">
+        <li class="menu__option">
+          <a
+            (click)="changeOption('Activas')"
+            [ngClass]="{ 'highlighted-option': selectedOption === 'Activas' }"
+            class="menu__option__link highlighted-option"
+            >Activas</a
+          >
+        </li>
+        <li class="menu__option">
+          <a
+            (click)="changeOption('Pausadas')"
+            class="menu__option__link"
+            [ngClass]="{ 'highlighted-option': selectedOption === 'Pausadas' }"
+            >Pausadas</a
+          >
+        </li>
+        <li class="menu__option">
+          <a
+            (click)="changeOption('Pagadas')"
+            class="menu__option__link"
+            [ngClass]="{ 'highlighted-option': selectedOption === 'Pagadas' }"
+            >Pagadas</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div class="summary">
+      <div class="summary-item">
+        <p class="summary-item__title">Total a pagar</p>
+        <p class="summary-item__content">
+          $ {{ formatNumber(userPaymentInfo?.total) }}
+        </p>
+        <p class="summary-item__footer">
+          Total pagos: {{ userPaymentInfo?.numPayments }}
+          <span>({{ userPaymentInfo?.numInvoices }} facturas)</span>
+        </p>
+      </div>
+      <div class="summary-item">
+        <p class="summary-item__title">Por vencer en 7 días</p>
+        <p class="summary-item__content">
+          {{ userPaymentInfo?.due7Days }} facturas
+        </p>
+        <p class="summary-item__footer">
+          Hoy: {{ userPaymentInfo?.dueToday }} facturas
+        </p>
+      </div>
+      <div class="summary-item">
+        <p class="summary-item__title">Proveedor mayor monto</p>
+        <p class="summary-item__content">
+          {{ userPaymentInfo?.greatestValueProvider }}
+        </p>
+        <p class="summary-item__footer">
+          Total: ${{ formatNumber(userPaymentInfo?.greatestValue) }}
+        </p>
+      </div>
+      <div class="summary-item">
+        <p class="summary-item__title">Categoría más frecuente</p>
+        <p class="summary-item__content">
+          {{ userPaymentInfo?.mostFrequentCategory }}
+        </p>
+        <p class="summary-item__footer">
+          Frecuencia: {{ userPaymentInfo?.mostFrequentCategoryFrequency }}
+        </p>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="filters">
+      <form class="filter-forms">
+        <div class="filter-forms__search-bar">
+          <img
+            src="assets/icons/search-icon.svg"
+            alt="Export info"
+            class="search-icon"
+          />
+          <input
+            [(ngModel)]="searchTerm"
+            (input)="onSearch()"
+            name="search"
+            type="text"
+            class="filter-forms__search-input"
+          />
+        </div>
+        <div class="filter-forms__filter-by">
+          <select class="filter-forms__filter-by__field" name="options">
+            <option value="Todos">Todos</option>
+          </select>
+        </div>
+        <button type="button" class="filter-forms__sort-by">
+          <div class="sort-icon">
+            <img
+              src="assets/icons/sort-icon-top.svg"
+              alt="Sort icon"
+              class="sort-icon-top"
+            />
+            <img
+              src="assets/icons/sort-icon-middle.svg"
+              alt="Sort icon"
+              class="sort-icon-middle"
+            />
+            <img
+              src="assets/icons/sort-icon-bottom.svg"
+              alt="Sort icon"
+              class="sort-icon-bottom"
+            />
+          </div>
+          <span class="sort-by__text">Ordenar</span>
+        </button>
+      </form>
+      <a class="export-option">
+        <img
+          src="assets/icons/export-icon.svg"
+          alt="Export info"
+          class="export-icon"
+        />
+        <p class="export-text">Exportar</p>
+      </a>
+    </div>
+
+    <div class="pagination-container">
+      <div class="pagination-text">1-20 de 100 registros</div>
+      <div class="pages">
+        <button class="previous-btn disabled">
+          <svg
+            class="previous-icon"
+            width="13"
+            height="20"
+            viewBox="0 0 13 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              id="&#240;&#159;&#166;&#134; icon &#34;chevron big right arrow&#34;"
+            >
+              <path
+                id="Vector"
+                d="M11.7026 18.8323C11.2563 19.2458 10.5669 19.2456 10.1207 18.8321L1.43364 10.7796C1.00672 10.3839 1.00672 9.70858 1.43364 9.31285L10.1207 1.26041C10.5669 0.846831 11.2563 0.84671 11.7026 1.26014V1.26014C12.1997 1.72062 12.1998 2.50678 11.7028 2.9674L4.06505 10.0462L11.7029 17.1251C12.1998 17.5857 12.1997 18.3718 11.7026 18.8323V18.8323Z"
+                fill="currentColor"
+              />
+            </g>
+          </svg>
+        </button>
+        <button class="page-btn selected">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="next-btn">
+          <svg
+            class="next-icon"
+            width="11"
+            height="19"
+            viewBox="0 0 11 19"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              id="Vector"
+              d="M0.375514 0.674751C0.821834 0.261324 1.51128 0.261445 1.95745 0.675027L10.6445 8.72746C11.0714 9.12319 11.0714 9.7985 10.6445 10.1942L1.95745 18.2467C1.51127 18.6602 0.821833 18.6604 0.375513 18.2469V18.2469C-0.121608 17.7865 -0.121717 17.0003 0.375275 16.5397L8.01307 9.46085L0.375276 2.38201C-0.121716 1.92139 -0.121606 1.13523 0.375514 0.674751V0.674751Z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="records-per-page">
+        <select>
+          <option value="20">20 / página</option>
+          <option value="30">30 / página</option>
+          <option value="50">50 / página</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="payment-details">
+      <div class="payment-details__row">
+        <input type="checkbox" />
+        <p class="payment-details__header">Pago</p>
+        <p class="payment-details__header">Proveedor</p>
+        <p class="payment-details__header">Categoría</p>
+        <p class="payment-details__header">Vence</p>
+        <p class="payment-details__header">Valor</p>
+        <p class="payment-details__header">Responsable</p>
+        <p class="payment-details__header">Estado</p>
+      </div>
+      <div
+        *ngFor="let payment of filteredPayments"
+        class="payment-details__row"
+      >
+        <input [disabled]="payment.status === 'Rechazada'" type="checkbox" />
+        <div class="payment-details__container">
+          <p class="payment-details__text invoice">{{ payment.invoiceId }}</p>
+          <span class="payment-details__span"
+            >{{ payment.numItems }} ítems</span
+          >
+        </div>
+        <div class="payment-details__container">
+          <p class="payment-details__text">{{ payment.providerName }}</p>
+          <span class="payment-details__span">{{ payment.providerId }}</span>
+        </div>
+        <p class="payment-details__text">{{ payment.category }}</p>
+        <p class="payment-details__text">{{ formatDate(payment.dueDate) }}</p>
+        <p class="payment-details__text">
+          ${{ formatNumber(payment.invoiceValue) }}
+        </p>
+        <div class="payment-details__container">
+          <p class="payment-details__text">
+            {{ payment.assignedEmployeeName }}
+          </p>
+          <span class="payment-details__span">{{
+            payment.assignedEmnployeeRole
+          }}</span>
+        </div>
+        <div
+          class="payment-details__status"
+          [ngClass]="{
+            status__aproved: payment.status === 'Aprobada',
+            status__rejected: payment.status === 'Rechazada'
+          }"
+        >
+          <p class="payment-details__text status">
+            {{ payment.status }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="footer-container">
+    <p class="footer-container__text">
+      Total a pagar: <span>$12.000.000</span>
+    </p>
+    <div class="button-container">
+      <button class="footer-container__btn">Borrador</button>
+      <button class="footer-container__btn pay-btn">Pagar</button>
+    </div>
+  </section>
+  <div class="notification" *ngIf="justLoggedIn && showNotification">
+    <div class="notification-bar"></div>
+    <img
+      class="notification-icon"
+      src="/assets/icons/check-icon.svg"
+      alt="Notification Icon"
+    />
+    <span class="notification-message">Cambio exitoso</span>
+  </div>
+</div>

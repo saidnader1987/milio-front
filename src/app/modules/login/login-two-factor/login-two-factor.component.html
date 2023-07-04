@@ -1,0 +1,111 @@
+<div class="main-container">
+  <div class="content-div">
+    <div class="logo-section">
+      <div class="logo-container">
+        <img src="assets/images/milio.png" alt="logo" />
+      </div>
+      <div class="user-div">
+        <div class="user-info">
+          <div class="user-img">
+            <p>{{ userNameFirstLetter }}</p>
+          </div>
+          <div class="user-name">
+            <p>{{ userName }}</p>
+          </div>
+        </div>
+        <div class="vertical-line"></div>
+        <div class="sign-out-link">
+          <a (click)="logOut()">Cerrar sesión</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-options">
+      <div class="info-div">
+        <p>
+          Para continuar debes habilitar al menos un método de autenticación de
+          dos factores.
+        </p>
+      </div>
+      <div class="auth-div">
+        <p class="auth-div__title">Autenticación de dos factores</p>
+        <p class="auth-div__content">
+          Mantenga su cuenta segura con nuestro métodos de autenticación
+          multifactor.
+        </p>
+      </div>
+      <div class="method-div">
+        <div class="method-info">
+          <p>Aplicación de autenticación</p>
+          <p>
+            Una aplicación de autenticación le permite recibir códigos en su
+            teléfono sin tener que recibir mensajes de texto.
+          </p>
+        </div>
+        <div class="method-button">
+          <button (click)="openModal()">Habilitar</button>
+        </div>
+      </div>
+      <div class="method-div">
+        <div class="method-info">
+          <p>Clave dinámica para confirmar acciones</p>
+          <p>Recibirás un SMS en tu celular con un código de verificación.</p>
+        </div>
+        <div class="method-button">
+          <button>Habilitar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="image-div">
+    <img src="assets/images/background.png" alt="background" />
+  </div>
+</div>
+
+<!-- MODAL WINDOW -->
+<div class="modal-window hidden" #modalWindow>
+  <p class="modal-header">Escanear el código para doble autenticación</p>
+  <p class="modal-instructions">
+    Utiliza una aplicación de autenticación como Google Authenticator o
+    Microsoft Authenticator para escanear el código QR e ingresa el código de 6
+    dígitos que devuelve la aplicación.
+  </p>
+  <img src="assets/images/qr.png" />
+  <div class="modal-alternative">
+    <p>O ingresa 6XMSEA4LT7KN4SVQ4XNDQFJNMY25WWC6 en tu aplicación.</p>
+  </div>
+  <p class="modal-form__instructions">
+    Ingresa el código de autenticación de 6 dígitos.
+  </p>
+  <form
+    class="modal-form"
+    [formGroup]="codeForm"
+    #codeFormRef="ngForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div *ngFor="let codeIndex of [1, 2, 3, 4, 5, 6]">
+      <input
+        class="modal-form__input"
+        type="text"
+        [formControlName]="'code' + codeIndex"
+        maxlength="1"
+      />
+    </div>
+  </form>
+  <div class="text-danger" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+  <button
+    class="modal-form__btn"
+    [ngClass]="{
+      'button-enabled': codeForm.valid,
+      'button-disabled': !codeForm.valid
+    }"
+    [disabled]="!codeForm.valid"
+    (click)="codeFormRef.ngSubmit.emit()"
+  >
+    Validar
+  </button>
+</div>
+<div class="overlay hidden" (click)="closeModal()" #overlay></div>

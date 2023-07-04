@@ -1,0 +1,13 @@
+.layout {
+  display: grid;
+  grid-template-columns: 23rem 1fr;
+  height: 100vh;
+}
+
+app-sidebar {
+  height: 100%;
+}
+
+.main-content {
+  height: 100%;
+}

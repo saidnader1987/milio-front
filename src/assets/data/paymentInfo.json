@@ -1,0 +1,176 @@
+[
+  {
+    "id": "1",
+    "numPayments": 12,
+    "total": 12000000,
+    "numInvoices": 40,
+    "due7Days": 8,
+    "dueToday": 4,
+    "greatestValueProvider": "Monte rojo",
+    "greatestValue": 3000000,
+    "mostFrequentCategory": "Alimentos y bebidas",
+    "mostFrequentCategoryFrequency": 8,
+    "payments": [
+      {
+        "invoiceId": "FE1658568",
+        "numItems": 12,
+        "providerName": "Clínica de piel",
+        "providerId": "901300200",
+        "category": "Servicios de salud",
+        "dueDate": "2022-02-18T00:00:00.000Z",
+        "invoiceValue": "200000",
+        "assignedEmployeeName": "Jesús Caldas",
+        "assignedEmnployeeRole": "Administrador",
+        "status": "Aprobada"
+      },
+      {
+        "invoiceId": "FE1658568",
+        "numItems": 12,
+        "providerName": "Clínica de pielClínica de pielClínica de piel",
+        "providerId": "901300200",
+        "category": "Servicios de salud",
+        "dueDate": "2022-02",
+        "invoiceValue": "200000",
+        "assignedEmployeeName": "Jesús Caldas",
+        "assignedEmnployeeRole": "Administrador",
+        "status": "Rechazada"
+      },
+      {
+        "invoiceId": "FE1658568",
+        "numItems": 12,
+        "providerName": "Amber",
+        "providerId": "901300200",
+        "category": "Servicios de salud",
+        "dueDate": "2022-02-18T00:00:00.000Z",
+        "invoiceValue": "200000",
+        "assignedEmployeeName": "Jesús Caldas",
+        "assignedEmnployeeRole": "Administrador",
+        "status": "Aprobada"
+      },
+      {
+        "invoiceId": "FE1658568",
+        "numItems": 12,
+        "providerName": "Clínica de piel",
+        "providerId": "901300200",
+        "category": "Servicios de salud",
+        "dueDate": "2022-02-18T00:00:00.000Z",
+        "invoiceValue": "200000",
+        "assignedEmployeeName": "Jesús Caldas",
+        "assignedEmnployeeRole": "Administrador",
+        "status": "Aprobada"
+      },
+      {
+        "invoiceId": "FE1658568",
+        "numItems": 12,
+        "providerName": "Clínica de piel",
+        "providerId": "901300200",
+        "category": "Servicios de salud",
+        "dueDate": "2022-02-18T00:00:00.000Z",
+        "invoiceValue": "200000",
+        "assignedEmployeeName": "Jesús Caldas",
+        "assignedEmnployeeRole": "Administrador",
+        "status": "Aprobada"
+      },
+      {
+        "invoiceId": "FE1658568",
+        "numItems": 12,
+        "providerName": "Clínica de piel",
+        "providerId": "901300200",
+        "category": "Servicios de salud",
+        "dueDate": "2022-02-18T00:00:00.000Z",
+        "invoiceValue": "200000",
+        "assignedEmployeeName": "Jesús Caldas",
+        "assignedEmnployeeRole": "Administrador",
+        "status": "Aprobada"
+      },
+      {
+        "invoiceId": "FE1658568",
+        "numItems": 12,
+        "providerName": "Clínica de piel",
+        "providerId": "901300200",
+        "category": "Servicios de salud",
+        "dueDate": "2022-02-18T00:00:00.000Z",
+        "invoiceValue": "200000",
+        "assignedEmployeeName": "Jesús Caldas",
+        "assignedEmnployeeRole": "Administrador",
+        "status": "Aprobada"
+      },
+      {
+        "invoiceId": "FE1658568",
+        "numItems": 12,
+        "providerName": "Clínica de piel",
+        "providerId": "901300200",
+        "category": "Servicios de salud",
+        "dueDate": "2022-02-18T00:00:00.000Z",
+        "invoiceValue": "200000",
+        "assignedEmployeeName": "Jesús Caldas",
+        "assignedEmnployeeRole": "Administrador",
+        "status": "Aprobada"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "numPayments": 14,
+    "total": 13000000,
+    "numInvoices": 42,
+    "due7Days": 9,
+    "dueToday": 5,
+    "greatestValueProvider": "Finca Amalin",
+    "greatestValue": 3100000,
+    "mostFrequentCategory": "Agricultura",
+    "mostFrequentCategoryFrequency": 9,
+    "payments": [
+      {
+        "invoiceId": "FE1658569",
+        "numItems": 14,
+        "providerName": "Hospital General",
+        "providerId": "901300201",
+        "category": "Servicios de salud",
+        "dueDate": "2022-02-19T00:00:00.000Z",
+        "invoiceValue": "210000",
+        "assignedEmployeeName": "Pedro Mendoza",
+        "assignedEmnployeeRole": "Analista",
+        "status": "Aprobada"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "numPayments": 16,
+    "total": 14000000,
+    "numInvoices": 44,
+    "due7Days": 10,
+    "dueToday": 6,
+    "greatestValueProvider": "Bellaflor",
+    "greatestValue": 3200000,
+    "mostFrequentCategory": "Floricultura",
+    "mostFrequentCategoryFrequency": 10,
+    "payments": [
+      {
+        "invoiceId": "FE1658570",
+        "numItems": 16,
+        "providerName": "Dentista Sonrisa",
+        "providerId": "901300202",
+        "category": "Servicios de salud",
+        "dueDate": "2022-02-20T00:00:00.000Z",
+        "invoiceValue": "220000",
+        "assignedEmployeeName": "Maria Fernandez",
+        "assignedEmnployeeRole": "Coordinador",
+        "status": "Aprobada"
+      },
+      {
+        "invoiceId": "FE1658571",
+        "numItems": 18,
+        "providerName": "Veterinaria Pet Care",
+        "providerId": "901300203",
+        "category": "Servicios de salud",
+        "dueDate": "2022-02-21T00:00:00.000Z",
+        "invoiceValue": "230000",
+        "assignedEmployeeName": "Carlos Peña",
+        "assignedEmnployeeRole": "Coordinador",
+        "status": "Aprobada"
+      }
+    ]
+  }
+]
