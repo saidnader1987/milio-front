@@ -131,7 +131,11 @@
     <div class="pagination-container">
       <div class="pagination-text">1-20 de 100 registros</div>
       <div class="pages">
-        <button class="previous-btn disabled">
+        <button
+          class="previous-btn"
+          (click)="prevPageBlock()"
+          [class.disabled]="startPage === 1"
+        >
           <svg
             class="previous-icon"
             width="13"
@@ -151,10 +155,19 @@
             </g>
           </svg>
         </button>
-        <button class="page-btn selected">1</button>
-        <button class="page-btn">2</button>
-        <button class="page-btn">3</button>
-        <button class="next-btn">
+        <button
+          *ngFor="let page of paginationPages"
+          [class.selected]="page === currentPage"
+          class="page-btn"
+          (click)="currentPage = page"
+        >
+          {{ page }}
+        </button>
+        <button
+          [class.disabled]="startPage + maxDisplayedPages - 1 >= totalPages"
+          class="next-btn"
+          (click)="nextPageBlock()"
+        >
           <svg
             class="next-icon"
             width="11"
@@ -171,11 +184,12 @@
           </svg>
         </button>
       </div>
-      <div class="records-per-page">
-        <select>
+      <div (change)="setPaginationPages()" class="records-per-page">
+        <select [(ngModel)]="paymentsPerPage">
+          <option value="5">5 / página</option>
+          <option value="10">10 / página</option>
           <option value="20">20 / página</option>
           <option value="30">30 / página</option>
-          <option value="50">50 / página</option>
         </select>
       </div>
     </div>
@@ -192,7 +206,7 @@
         <p class="payment-details__header">Estado</p>
       </div>
       <div
-        *ngFor="let payment of filteredPayments"
+        *ngFor="let payment of getDisplayedPayments()"
         class="payment-details__row"
       >
         <input [disabled]="payment.status === 'Rechazada'" type="checkbox" />

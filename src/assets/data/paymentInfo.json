@@ -94,18 +94,6 @@
         "assignedEmployeeName": "Jesús Caldas",
         "assignedEmnployeeRole": "Administrador",
         "status": "Aprobada"
-      },
-      {
-        "invoiceId": "FE1658568",
-        "numItems": 12,
-        "providerName": "Clínica de piel",
-        "providerId": "901300200",
-        "category": "Servicios de salud",
-        "dueDate": "2022-02-18T00:00:00.000Z",
-        "invoiceValue": "200000",
-        "assignedEmployeeName": "Jesús Caldas",
-        "assignedEmnployeeRole": "Administrador",
-        "status": "Aprobada"
       }
     ]
   },

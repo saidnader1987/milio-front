@@ -13,7 +13,7 @@ export class PaymentDetailComponent implements OnInit {
   filteredPayments: Payment[] = [];
   searchTerm: string = '';
   currentPage: number = 1;
-  paymentsPerPage: number = 20;
+  paymentsPerPage: number = 5;
   maxDisplayedPages: number = 3;
   startPage: number = 1;
   paginationPages: number[] = [];
@@ -33,7 +33,7 @@ export class PaymentDetailComponent implements OnInit {
     if (this.searchTerm.trim() === '') {
       if (this.userPaymentInfo) {
         this.filteredPayments = this.userPaymentInfo.payments;
-        // this.resetCurrentPage();
+        this.resetCurrentPage();
       }
     } else {
       if (this.userPaymentInfo) {
@@ -43,9 +43,15 @@ export class PaymentDetailComponent implements OnInit {
               .toLowerCase()
               .includes(this.searchTerm.toLowerCase())
         );
-        // this.resetCurrentPage();
+        this.resetCurrentPage();
       }
     }
+  }
+
+  getDisplayedPayments(): Payment[] {
+    const startIndex = (this.currentPage - 1) * this.paymentsPerPage;
+    const endIndex = this.currentPage * this.paymentsPerPage;
+    return this.filteredPayments.slice(startIndex, endIndex);
   }
 
   changeOption(option: string) {
@@ -70,6 +76,43 @@ export class PaymentDetailComponent implements OnInit {
     return `${day}/${month}/${year}`;
   }
 
+  setPaginationPages(): void {
+    const finishPage = this.startPage + this.maxDisplayedPages - 1;
+    let length: number;
+    if (finishPage >= this.totalPages) {
+      length = this.totalPages - this.startPage + 1;
+    } else {
+      length = this.maxDisplayedPages;
+    }
+    this.paginationPages = Array.from({ length }, (_, i) => this.startPage + i);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredPayments.length / this.paymentsPerPage);
+  }
+
+  resetCurrentPage(): void {
+    this.currentPage = 1;
+    this.startPage = 1;
+    this.setPaginationPages();
+  }
+
+  prevPageBlock(): void {
+    if (this.startPage > 1) {
+      this.startPage -= this.maxDisplayedPages;
+      this.currentPage = this.startPage;
+      this.setPaginationPages();
+    }
+  }
+
+  nextPageBlock(): void {
+    if (this.startPage + this.maxDisplayedPages - 1 < this.totalPages) {
+      this.startPage += this.maxDisplayedPages;
+      this.currentPage = this.startPage;
+      this.setPaginationPages();
+    }
+  }
+
   getUserPaymentInfo(id: string) {
     this.paymentService.getUserPaymentInfo(id).subscribe({
       next: (res) => {
@@ -78,6 +121,7 @@ export class PaymentDetailComponent implements OnInit {
           this.userPaymentInfo = data;
           if (this.userPaymentInfo) {
             this.filteredPayments = this.userPaymentInfo.payments;
+            this.setPaginationPages();
           }
         }
       },
