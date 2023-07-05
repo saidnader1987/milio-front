@@ -1,3 +1,116 @@
-<p>
-  profile-detail works!
-</p>
+<div class="outer-container">
+  <section class="main-container">
+    <header class="header-container">
+      <a (click)="renderPreviousComponent()" class="back-link">
+        <img src="assets/icons/arrow-back-icon.svg" alt="back" />
+      </a>
+      <p class="header-container__text">Mi perfil</p>
+    </header>
+    <main class="inner-container">
+      <p class="inner-container__header">Información general</p>
+      <div class="photo-section">
+        <div class="photo-section__photo-container mtop-3">
+          <div class="user-img">
+            <p>S</p>
+          </div>
+          <div class="photo-section__instructions">
+            <p>Tamaño máximo:</p>
+            <p>720 x 720px, png or jpeg</p>
+          </div>
+        </div>
+        <button class="profile-button">Cargar foto</button>
+      </div>
+
+      <div class="name-last-forms mtop-3 padding-bo-3-border-bo">
+        <form class="profile-form">
+          <label for="name">Nombres</label>
+          <input placeholder="Daniel" id="name" type="text" />
+        </form>
+
+        <form class="profile-form">
+          <label for="last">Apellidos</label>
+          <input placeholder="Gomez" id="last" type="text" />
+        </form>
+      </div>
+
+      <div class="phone-form mtop-3 padding-bo-3-border-bo flex-container">
+        <div>
+          <p class="inner-container__header">Celular</p>
+          <form class="profile-form mtop-2">
+            <label for="phone">Celular</label>
+            <input placeholder="******5555" id="phone" type="text" />
+          </form>
+        </div>
+        <div>
+          <button class="profile-button profile-button--wide">Cambiar</button>
+        </div>
+      </div>
+
+      <div class="email-form mtop-3 padding-bo-3-border-bo flex-container">
+        <div>
+          <p class="inner-container__header">Correo electrónico</p>
+          <form class="profile-form mtop-2">
+            <label for="email">Correo electrónico</label>
+            <input placeholder="daniel@miliopay.com" id="email" type="text" />
+          </form>
+        </div>
+        <button class="profile-button profile-button--wide">Cambiar</button>
+      </div>
+
+      <div class="password-form mtop-3 padding-bo-3-border-bo flex-container">
+        <div>
+          <p class="inner-container__header">Contraseña</p>
+          <div class="mtop-2">
+            <p class="inner-container__text">Elige una contraseña segura.</p>
+          </div>
+        </div>
+        <button class="profile-button profile-button--wide">Cambiar</button>
+      </div>
+
+      <div class="auth-options mtop-5">
+        <div class="auth-options__header">
+          <p class="inner-container__header">Autenticación de dos factores</p>
+          <div class="mtop-2">
+            <p class="mtop-2 inner-container__text">
+              Mantenga su cuenta segura con nuestro métodos de autenticación
+              multifactor. Debes tener al menos un método habilitado.
+            </p>
+          </div>
+        </div>
+        <div class="mtop-5 flex-container">
+          <div class="auth-options__two-factor">
+            <p class="inner-container__header sm-header">
+              Aplicación de autenticación
+            </p>
+            <div class="mtop-2">
+              <p class="inner-container__text sm-text">
+                Una aplicación de autenticación le permite recibir códigos en su
+                teléfono sin tener que recibir mensajes de texto.
+              </p>
+            </div>
+          </div>
+          <button class="profile-button profile-button--wide disable-btn">
+            Deshabilitar
+          </button>
+        </div>
+
+        <div class="mtop-5 flex-container">
+          <div class="auth-options__one-time-password">
+            <p class="inner-container__header sm-header">
+              Clave dinámica para confirmar acciones
+            </p>
+            <div class="mtop-2">
+              <p class="inner-container__text sm-text">
+                Recibirás un SMS en tu celular con un código de verificación.
+              </p>
+            </div>
+          </div>
+          <button class="profile-button profile-button--wide enable-btn">
+            Habilitar
+          </button>
+        </div>
+        <div></div>
+      </div>
+    </main>
+  </section>
+</div>

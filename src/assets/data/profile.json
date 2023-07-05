@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "name": "Said",
+    "lastName": "Nader",
+    "phoneNumber": "3456789",
+    "phoneCountry": "USA",
+    "twoFactorApp": true,
+    "oneTimePassword": false
+  },
+  {
+    "id": "2",
+    "name": "María Elisa",
+    "lastName": "Quintero",
+    "phoneNumber": "7765635",
+    "phoneCountry": "Colombia",
+    "twoFactorApp": true,
+    "oneTimePassword": true
+  },
+  {
+    "id": "3",
+    "name": "Arya",
+    "lastName": "Nader",
+    "phoneNumber": "9878987",
+    "phoneCountry": "Belgium",
+    "twoFactorApp": true,
+    "oneTimePassword": false
+  }
+]

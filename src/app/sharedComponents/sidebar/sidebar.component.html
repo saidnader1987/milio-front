@@ -17,7 +17,9 @@
     </div>
     <div
       (click)="renderOption('Transacciones')"
-      [ngClass]="{ 'highlighted-option': selectedOption === 'Transacciones' }"
+      [ngClass]="{
+        'highlighted-option': selectedOption === 'Transacciones'
+      }"
       class="options-item"
     >
       <img
@@ -77,7 +79,9 @@
     </div>
     <div
       (click)="renderOption('Configuracion')"
-      [ngClass]="{ 'highlighted-option': selectedOption === 'Configuracion' }"
+      [ngClass]="{
+        'highlighted-option': selectedOption === 'Configuracion'
+      }"
       class="options-item"
     >
       <img
