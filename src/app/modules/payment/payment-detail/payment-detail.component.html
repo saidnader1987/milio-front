@@ -110,23 +110,32 @@
           [class.sorted]="sortOrder !== undefined"
           class="filter-forms__sort-by"
         >
-          <div class="sort-icon">
-            <img
-              src="assets/icons/sort-icon-top.svg"
-              alt="Sort icon"
-              class="sort-icon-top"
+          <svg
+            class="sort-icon"
+            width="17"
+            height="7"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              id="Vector 9"
+              d="M1 1H16.5"
+              stroke-width="1.5"
+              stroke-linecap="round"
             />
-            <img
-              src="assets/icons/sort-icon-middle.svg"
-              alt="Sort icon"
-              class="sort-icon-middle"
+            <path
+              id="Vector 10"
+              d="M1 4H11.5"
+              stroke-width="1.5"
+              stroke-linecap="round"
             />
-            <img
-              src="assets/icons/sort-icon-bottom.svg"
-              alt="Sort icon"
-              class="sort-icon-bottom"
+            <path
+              id="Vector 11"
+              d="M1 7H5.5"
+              stroke-width="1.5"
+              stroke-linecap="round"
             />
-          </div>
+          </svg>
           <span class="sort-by__text">Ordenar</span>
         </button>
       </form>
@@ -210,7 +219,7 @@
 
     <div class="payment-details">
       <div class="payment-details__row">
-        <input type="checkbox" />
+        <input type="checkbox" (change)="selectAllPayments($event)" />
         <p class="payment-details__header">Pago</p>
         <p class="payment-details__header">Proveedor</p>
         <p class="payment-details__header">Categoría</p>
@@ -223,7 +232,12 @@
         *ngFor="let payment of getDisplayedPayments()"
         class="payment-details__row"
       >
-        <input [disabled]="payment.status === 'Rechazada'" type="checkbox" />
+        <input
+          [disabled]="payment.status === 'Rechazada'"
+          type="checkbox"
+          [(ngModel)]="payment.isSelected"
+          (change)="selectPayments()"
+        />
         <div class="payment-details__container">
           <p class="payment-details__text invoice">{{ payment.invoiceId }}</p>
           <span class="payment-details__span"
@@ -263,11 +277,19 @@
   </section>
   <section class="footer-container">
     <p class="footer-container__text">
-      Total a pagar: <span>$12.000.000</span>
+      Total a pagar:<span>${{ formatNumber(getTotalValue()) }}</span>
     </p>
     <div class="button-container">
       <button class="footer-container__btn">Borrador</button>
-      <button class="footer-container__btn pay-btn">Pagar</button>
+      <button
+        class="footer-container__btn"
+        [ngClass]="{
+          'button-disabled': getTotalValue() === 0,
+          'button-enabled': getTotalValue() !== 0
+        }"
+      >
+        Pagar
+      </button>
     </div>
   </section>
   <div class="notification" *ngIf="justLoggedIn && showNotification">

@@ -4,13 +4,19 @@ import { PaymentService } from 'src/app/services/payment.service';
 import { UserPaymentsInfo } from 'src/app/models/userPaymentsInfo';
 import { Payment } from 'src/app/models/payment';
 
+interface SelectablePayment extends Payment {
+  isSelected?: boolean;
+}
+
 @Component({
   selector: 'app-payment-detail',
   templateUrl: './payment-detail.component.html',
   styleUrls: ['./payment-detail.component.css'],
 })
 export class PaymentDetailComponent implements OnInit {
-  filteredPayments: Payment[] = [];
+  filteredPayments: SelectablePayment[] = [];
+  selectedPayments: SelectablePayment[] = [];
+
   searchTerm: string = '';
   currentPage: number = 1;
   paymentsPerPage: number = 5;
@@ -31,24 +37,31 @@ export class PaymentDetailComponent implements OnInit {
     private paymentService: PaymentService
   ) {}
 
-  // onSearch(): void {
-  //   if (this.searchTerm.trim() === '') {
-  //     if (this.userPaymentInfo) {
-  //       this.filteredPayments = this.userPaymentInfo.payments;
-  //       this.resetCurrentPage();
-  //     }
-  //   } else {
-  //     if (this.userPaymentInfo) {
-  //       this.filteredPayments = this.userPaymentInfo.payments.filter(
-  //         (payment) =>
-  //           payment.providerName
-  //             .toLowerCase()
-  //             .includes(this.searchTerm.toLowerCase())
-  //       );
-  //       this.resetCurrentPage();
-  //     }
-  //   }
-  // }
+  selectPayments(): void {
+    // uses short circuits to ensure undefined is not returned
+    this.selectedPayments =
+      this.userPaymentInfo?.payments.filter(
+        (payment: SelectablePayment) =>
+          payment.isSelected && payment.status !== 'Rechazada'
+      ) || [];
+  }
+
+  selectAllPayments(event: any): void {
+    const isSelected = event.target.checked;
+    if (this.userPaymentInfo) {
+      this.userPaymentInfo.payments.forEach((payment: SelectablePayment) => {
+        if (payment.status === 'Aprobada') payment.isSelected = isSelected;
+      });
+      this.selectPayments();
+    }
+  }
+
+  getTotalValue(): number {
+    return this.selectedPayments.reduce(
+      (acc, payment) => acc + Number(payment.invoiceValue),
+      0
+    );
+  }
 
   filterPayments(): void {
     if (this.userPaymentInfo) {
@@ -92,7 +105,7 @@ export class PaymentDetailComponent implements OnInit {
     } registro${plural}`;
   }
 
-  getDisplayedPayments(): Payment[] {
+  getDisplayedPayments(): SelectablePayment[] {
     const startIndex = (this.currentPage - 1) * this.paymentsPerPage;
     const endIndex = this.currentPage * this.paymentsPerPage;
     return this.filteredPayments.slice(startIndex, endIndex);
@@ -162,7 +175,13 @@ export class PaymentDetailComponent implements OnInit {
       next: (res) => {
         const { status, data } = res;
         if (status) {
-          this.userPaymentInfo = data;
+          this.userPaymentInfo = {
+            ...data,
+            payments: data.payments.map((payment: Payment) => ({
+              ...payment,
+              isSelected: false,
+            })),
+          };
           if (this.userPaymentInfo) {
             this.filteredPayments = [...this.userPaymentInfo.payments];
             this.setPaginationPages();
