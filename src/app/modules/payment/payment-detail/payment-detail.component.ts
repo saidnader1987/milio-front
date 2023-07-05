@@ -13,10 +13,12 @@ export class PaymentDetailComponent implements OnInit {
   filteredPayments: Payment[] = [];
   searchTerm: string = '';
   currentPage: number = 1;
-  paymentsPerPage: number = 2;
+  paymentsPerPage: number = 5;
+  filterOption: string = 'Todos';
   maxDisplayedPages: number = 3;
   startPage: number = 1;
   paginationPages: number[] = [];
+  sortOrder: string | undefined = undefined;
 
   justLoggedIn!: boolean;
   userId!: string;
@@ -29,23 +31,65 @@ export class PaymentDetailComponent implements OnInit {
     private paymentService: PaymentService
   ) {}
 
-  onSearch(): void {
-    if (this.searchTerm.trim() === '') {
-      if (this.userPaymentInfo) {
-        this.filteredPayments = this.userPaymentInfo.payments;
-        this.resetCurrentPage();
-      }
-    } else {
-      if (this.userPaymentInfo) {
-        this.filteredPayments = this.userPaymentInfo.payments.filter(
-          (payment) =>
-            payment.providerName
-              .toLowerCase()
-              .includes(this.searchTerm.toLowerCase())
+  // onSearch(): void {
+  //   if (this.searchTerm.trim() === '') {
+  //     if (this.userPaymentInfo) {
+  //       this.filteredPayments = this.userPaymentInfo.payments;
+  //       this.resetCurrentPage();
+  //     }
+  //   } else {
+  //     if (this.userPaymentInfo) {
+  //       this.filteredPayments = this.userPaymentInfo.payments.filter(
+  //         (payment) =>
+  //           payment.providerName
+  //             .toLowerCase()
+  //             .includes(this.searchTerm.toLowerCase())
+  //       );
+  //       this.resetCurrentPage();
+  //     }
+  //   }
+  // }
+
+  filterPayments(): void {
+    if (this.userPaymentInfo) {
+      this.filteredPayments = [...this.userPaymentInfo.payments];
+      if (this.searchTerm.trim() !== '') {
+        this.filteredPayments = this.filteredPayments.filter((payment) =>
+          payment.providerName
+            .toLowerCase()
+            .includes(this.searchTerm.toLowerCase())
         );
-        this.resetCurrentPage();
       }
+      if (this.filterOption !== 'Todos') {
+        this.filteredPayments = this.filteredPayments.filter(
+          (payment) => payment.status === this.filterOption
+        );
+      }
+      if (this.sortOrder) {
+        this.filteredPayments.sort((a, b) => b.invoiceValue - a.invoiceValue);
+      }
+      this.resetCurrentPage();
     }
+  }
+
+  toggleSortingOption() {
+    this.sortOrder = this.sortOrder ? undefined : 'ascending';
+  }
+
+  getPaginationText() {
+    let start = (this.currentPage - 1) * this.paymentsPerPage + 1;
+    let end = Math.min(
+      this.currentPage * this.paymentsPerPage,
+      this.filteredPayments.length
+    );
+    let plural =
+      this.filteredPayments.length > 1 || this.filteredPayments.length === 0
+        ? 's'
+        : '';
+
+    return `${this.filteredPayments.length === 0 ? 0 : start}-${end} de ${
+      this.filteredPayments.length
+    } registro${plural}`;
   }
 
   getDisplayedPayments(): Payment[] {
@@ -120,7 +164,7 @@ export class PaymentDetailComponent implements OnInit {
         if (status) {
           this.userPaymentInfo = data;
           if (this.userPaymentInfo) {
-            this.filteredPayments = this.userPaymentInfo.payments;
+            this.filteredPayments = [...this.userPaymentInfo.payments];
             this.setPaginationPages();
           }
         }

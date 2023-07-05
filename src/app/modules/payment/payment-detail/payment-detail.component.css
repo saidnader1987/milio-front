@@ -263,6 +263,11 @@ hr {
   color: #242424;
 }
 
+.sorted {
+  background-color: #0136fe;
+  color: #fff;
+}
+
 .export-option {
   display: flex;
   align-items: center;
@@ -414,7 +419,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: -3rem;
+  /* margin-left: -3rem; */
   height: 2.5rem;
   width: 10rem;
 }

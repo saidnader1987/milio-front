@@ -86,18 +86,30 @@
           />
           <input
             [(ngModel)]="searchTerm"
-            (input)="onSearch()"
+            (input)="filterPayments()"
             name="search"
             type="text"
             class="filter-forms__search-input"
           />
         </div>
         <div class="filter-forms__filter-by">
-          <select class="filter-forms__filter-by__field" name="options">
+          <select
+            (change)="filterPayments()"
+            [(ngModel)]="filterOption"
+            class="filter-forms__filter-by__field"
+            name="filter-by"
+          >
             <option value="Todos">Todos</option>
+            <option value="Aprobada">Aprobadas</option>
+            <option value="Rechazada">Rechazadas</option>
           </select>
         </div>
-        <button type="button" class="filter-forms__sort-by">
+        <button
+          type="button"
+          (click)="toggleSortingOption(); filterPayments()"
+          [class.sorted]="sortOrder !== undefined"
+          class="filter-forms__sort-by"
+        >
           <div class="sort-icon">
             <img
               src="assets/icons/sort-icon-top.svg"
@@ -129,7 +141,9 @@
     </div>
 
     <div class="pagination-container">
-      <div class="pagination-text">1-20 de 100 registros</div>
+      <div class="pagination-text">
+        {{ getPaginationText() }}
+      </div>
       <div class="pages">
         <button
           class="previous-btn"
@@ -184,8 +198,8 @@
           </svg>
         </button>
       </div>
-      <div (change)="setPaginationPages()" class="records-per-page">
-        <select [(ngModel)]="paymentsPerPage">
+      <div class="records-per-page">
+        <select (change)="setPaginationPages()" [(ngModel)]="paymentsPerPage">
           <option value="5">5 / página</option>
           <option value="10">10 / página</option>
           <option value="20">20 / página</option>
