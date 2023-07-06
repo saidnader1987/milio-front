@@ -42,7 +42,7 @@
             teléfono sin tener que recibir mensajes de texto.
           </p>
         </div>
-        <div class="method-button">
+        <div class="method-button" [class.disabled]="!twoFactorSetting">
           <button (click)="openModal()">Habilitar</button>
         </div>
       </div>
@@ -51,7 +51,7 @@
           <p>Clave dinámica para confirmar acciones</p>
           <p>Recibirás un SMS en tu celular con un código de verificación.</p>
         </div>
-        <div class="method-button">
+        <div class="method-button" [class.disabled]="!oneTimePasswordSetting">
           <button>Habilitar</button>
         </div>
       </div>

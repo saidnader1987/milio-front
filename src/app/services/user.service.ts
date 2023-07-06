@@ -48,6 +48,8 @@ export class UserService {
             id: user.id,
             email: user.email,
             name: user.name,
+            twoFactorSetting: user.twofactorsetting,
+            oneTimePasswordSetting: user.onetimepasswordsetting,
             message: 'Password authentication succesful',
           };
         } else {
@@ -56,6 +58,8 @@ export class UserService {
             id: undefined,
             email: undefined,
             name: undefined,
+            twoFactorSetting: undefined,
+            oneTimePasswordSetting: undefined,
             message: 'Password does not match',
           };
         }

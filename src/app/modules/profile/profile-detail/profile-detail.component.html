@@ -121,7 +121,7 @@
               'enable-btn': !twoFactorSetting
             }"
           >
-            Deshabilitar
+            {{ twoFactorSetting ? "Deshabilitar" : "Habilitar" }}
           </button>
         </div>
 
@@ -144,7 +144,7 @@
               'enable-btn': !oneTimePasswordSetting
             }"
           >
-            Habilitar
+            {{ oneTimePasswordSetting ? "Deshabilitar" : "Habilitar" }}
           </button>
         </div>
         <div></div>

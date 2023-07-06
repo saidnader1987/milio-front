@@ -15,6 +15,8 @@ export class LoginTwoFactorComponent implements OnInit {
   userName!: string;
   userNameFirstLetter!: string;
   codeForm!: FormGroup;
+  twoFactorSetting!: boolean;
+  oneTimePasswordSetting!: boolean;
 
   // MODAL
   @ViewChild('modalWindow') modal!: ElementRef;
@@ -79,6 +81,9 @@ export class LoginTwoFactorComponent implements OnInit {
 
     this.userNameFirstLetter = this.userName[0];
     this.addEscapeListenerToModal();
+
+    this.oneTimePasswordSetting = this.authService.getOneTimePasswordSetting();
+    this.twoFactorSetting = this.authService.getTwoFactorSetting();
 
     this.codeForm = this.formBuilder.group({
       code1: [

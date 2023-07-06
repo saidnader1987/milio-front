@@ -182,6 +182,10 @@
   border: none;
 }
 
+.method-button.disabled button {
+  background-color: #9c9c9c;
+}
+
 /* -------------------------- */
 /* MODAL */
 .hidden {

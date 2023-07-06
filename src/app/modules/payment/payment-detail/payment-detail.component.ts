@@ -194,8 +194,9 @@ export class PaymentDetailComponent implements OnInit {
 
   ngOnInit() {
     this.justLoggedIn = this.authService.hasJustLoggedIn();
-    // this.userId = this.authService.getUserId();
-    this.userId = '1';
+    this.userId = this.authService.getUserId();
+    // FOR DEVELOPMENT ONLY
+    // this.userId = '1';
     setTimeout(() => {
       this.showNotification = false;
     }, 5000);

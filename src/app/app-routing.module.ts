@@ -9,44 +9,19 @@ import { ProfileDetailComponent } from './modules/profile/profile-detail/profile
 import { NotImplementedComponent } from './sharedComponents/not-implemented/not-implemented.component';
 import { AuthGuard } from './auth.guard';
 
-// const routes: Routes = [
-//   { path: '', redirectTo: '/login', pathMatch: 'full' },
-//   { path: 'login', component: LoginUsernameComponent },
-//   {
-//     path: 'login/password',
-//     component: LoginPasswordComponent,
-//     canActivate: [AuthGuard],
-//   },
-//   {
-//     path: 'login/2factor',
-//     component: LoginTwoFactorComponent,
-//     canActivate: [AuthGuard],
-//   },
-//   {
-//     path: '',
-//     component: MainLayoutComponent,
-//     children: [
-//       {
-//         path: 'payments',
-//         component: PaymentDetailComponent,
-//         canActivate: [AuthGuard],
-//       },
-//       {
-//         path: 'profile',
-//         component: ProfileDetailComponent,
-//         canActivate: [AuthGuard],
-//       },
-//       {
-//         path: 'not-implemented',
-//         component: NotImplementedComponent,
-//         canActivate: [AuthGuard],
-//       },
-//     ],
-//   },
-// ];
-
-// FOR DEVELOPMENT ONLY
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginUsernameComponent },
+  {
+    path: 'login/password',
+    component: LoginPasswordComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'login/2factor',
+    component: LoginTwoFactorComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: '',
     component: MainLayoutComponent,
@@ -54,18 +29,43 @@ const routes: Routes = [
       {
         path: 'payments',
         component: PaymentDetailComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'profile',
         component: ProfileDetailComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'not-implemented',
         component: NotImplementedComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },
 ];
+
+// FOR DEVELOPMENT ONLY
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: MainLayoutComponent,
+//     children: [
+//       {
+//         path: 'payments',
+//         component: PaymentDetailComponent,
+//       },
+//       {
+//         path: 'profile',
+//         component: ProfileDetailComponent,
+//       },
+//       {
+//         path: 'not-implemented',
+//         component: NotImplementedComponent,
+//       },
+//     ],
+//   },
+// ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

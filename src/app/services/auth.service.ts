@@ -15,6 +15,8 @@ export class AuthService {
   private userId = undefined;
   private userEmail = undefined;
   private userName = undefined;
+  private twoFactorSetting = undefined;
+  private oneTimePasswordSetting = undefined;
 
   constructor(private userService: UserService) {}
 
@@ -33,6 +35,8 @@ export class AuthService {
         this.isPasswordStepComplete = res.success;
         this.userId = res.id;
         this.userName = res.name;
+        this.twoFactorSetting = res.twoFactorSetting;
+        this.oneTimePasswordSetting = res.oneTimePasswordSetting;
       })
     );
   }
@@ -62,6 +66,8 @@ export class AuthService {
     this.userEmail = undefined;
     this.userId = undefined;
     this.userName = undefined;
+    this.twoFactorSetting = undefined;
+    this.oneTimePasswordSetting = undefined;
   }
 
   isLoggedIn(): boolean {
@@ -101,5 +107,13 @@ export class AuthService {
 
   getUserName(): any {
     return this.userName;
+  }
+
+  getTwoFactorSetting(): any {
+    return this.twoFactorSetting;
+  }
+
+  getOneTimePasswordSetting(): any {
+    return this.oneTimePasswordSetting;
   }
 }

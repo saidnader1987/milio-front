@@ -114,8 +114,9 @@ export class ProfileDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.userId = this.authService.getUserId();
-    this.userId = '1';
+    this.userId = this.authService.getUserId();
+    // FOR DEVELOPMENT ONLY
+    // this.userId = '1';
     this.getProfileInfo(this.userId);
   }
 }
