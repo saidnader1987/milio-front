@@ -3,8 +3,9 @@
     "id": "1",
     "name": "Said",
     "lastName": "Nader",
+    "email": "snader@miliopay.com",
     "phoneNumber": "3456789",
-    "phoneCountry": "USA",
+    "countryCode": "+1",
     "twoFactorApp": true,
     "oneTimePassword": false
   },
@@ -12,8 +13,9 @@
     "id": "2",
     "name": "María Elisa",
     "lastName": "Quintero",
+    "email": "mquintero@miliopay.com",
     "phoneNumber": "7765635",
-    "phoneCountry": "Colombia",
+    "countryCode": "+57",
     "twoFactorApp": true,
     "oneTimePassword": true
   },
@@ -21,8 +23,9 @@
     "id": "3",
     "name": "Arya",
     "lastName": "Nader",
-    "phoneNumber": "9878987",
-    "phoneCountry": "Belgium",
+    "email": "anader@miliopay.com",
+    "phoneNumber": "3456787",
+    "countryCode": "+32",
     "twoFactorApp": true,
     "oneTimePassword": false
   }

@@ -1,0 +1,14 @@
+select {
+  width: 11.5rem;
+  height: 5.7rem;
+  flex-shrink: 0;
+  border: 1px solid #707070;
+  border-radius: 1rem;
+  padding: 8px;
+  font-size: 1.9rem;
+  color: #242424;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #242424;
+}

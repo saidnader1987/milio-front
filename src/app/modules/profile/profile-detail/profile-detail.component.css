@@ -207,6 +207,17 @@
   color: #242424;
 }
 
+.profile-form--sm input {
+  width: 29.6rem;
+}
+
+.forms-flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
 /* PASSWORD */
 
 .inner-container__text {

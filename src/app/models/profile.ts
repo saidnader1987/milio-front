@@ -3,8 +3,9 @@ export class Profile {
     public id: string,
     public name: string,
     public lastName: string,
+    public email: string,
     public phoneNumber: string,
-    public phoneCountry: string,
+    public countryCode: string,
     public twoFactorApp: boolean,
     public oneTimePassword: boolean
   ) {}

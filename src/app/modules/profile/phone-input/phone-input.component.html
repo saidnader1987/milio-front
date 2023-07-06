@@ -1,0 +1,9 @@
+<select name="country-codes">
+  <option
+    *ngFor="let option of countryOptions"
+    [value]="option.code"
+    [selected]="selectedCountry === option.code"
+  >
+    {{ option.flag }} {{ option.code }}
+  </option>
+</select>
